@@ -1,9 +1,5 @@
 import CoreML
 
-//public protocol MatlabEncodable {
-//    //static var keys: [String]{get}
-//}
-
 public protocol MatlabEncodableArray  {
     var columns:[[Any]]{get}
     var keys: [String]{get}
@@ -22,7 +18,6 @@ public class MatlabSerialization : NSObject {
 
 private struct MatlabWriter {
     func encodeScalar<T>(_ value: T) -> Data {
-        //return Data(bytes: &value, count: MemoryLayout.size(ofValue: value) )
         return withUnsafeBytes(of: value) { Data($0) }
     }
     
@@ -78,10 +73,6 @@ private struct MatlabWriter {
         }
         return m
     }
-    
-//    func serializeDictArray(_ array:[Dictionary<String,Any>]) {
-//
-//    }
     
     func serializeArrayTyped<T>(arrayTyped:[T], f:(T) throws -> Data,_ transpose:Bool = false) throws -> Data {
         var m = Data()
@@ -194,42 +185,6 @@ private struct MatlabWriter {
         return m
     }
     
-//    func serializeMultiBuffer<T:MultiArrayType>(_ mlmPointer:UnsafePointer<T>) -> Data {
-//        var m = Data()
-//
-////        m.append(encodeArray([UInt8](arrayLiteral: type,UInt8(mlmatrix.shape.count)) ))
-////        m.append(encodeArray(mlmatrix.shape))
-////        //let test = mlmatrix.shape.map{$0.uint32Value}
-////        m.append(encodeArray(mlmatrix.shape.map{$0.uint32Value}))
-////        for i in 0..<mlmatrix.count {
-////            print([UInt8](encodeScalar(&mlmatrix[i].doubleValue)))
-////            m.append(encodeScalar(&mlmatrix[i]))
-////        }
-//        return Data(buffer:mlmBuffer)
-//    }
-    
-//    func isArrayType<T>(array:[Any?], tType:T.Type) -> Bool {
-//        for value in array {
-//
-////            let arrayType = type(of: value)        // Array<Car>.Type
-////            let arrayType2 = type(of: value)
-////            //let carType = array.Element.self  // Car.Type
-////            let typeStr = String(describing: arrayType)
-////            let tS = T.self
-////
-////            if type(of:value) != tType { return false }
-////            if value is T.self {
-////                print("T.self")
-////            }
-//            if type(of:value) == T.self {
-//                print("T.Type")
-//            }
-//            if value is T.Type {
-//                print("T.Type")
-//            }
-//        }
-//        return true
-//    }
     func serializeStructs(_ structs:MatlabEncodableArray) throws -> Data {
         var m = Data()
         //var typeId:UInt8 = 128
@@ -266,7 +221,6 @@ private struct MatlabWriter {
         
         let valueArray = Array(dictionary.values)
         m.append(encodeArray([2,1,1] as [UInt32]))
-//        var bit:UInt8 = 1
         m.append(encodeScalar(1 as UInt8))
         try m.append(serializeArray(valueArray,true))//transpose to imitate struct2cell
         return m
@@ -274,9 +228,7 @@ private struct MatlabWriter {
     
     func serializeString(_ value:String) -> Data {
         var m = Data()
-//        let type:UInt8 = 0
         m.append(0 as UInt8)
-//        var count = UInt32(value.count)
         m.append(encodeScalar(UInt32(value.count)))
         m.append(value.data(using: .utf8)!)
         return m

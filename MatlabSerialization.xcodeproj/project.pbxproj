@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA0C785E2120A0A2009771F2 /* AudioBufferConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0C785D2120A0A2009771F2 /* AudioBufferConverter.swift */; };
 		AAA3047820F10DCC00226319 /* MatlabSerialization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA3046E20F10DCC00226319 /* MatlabSerialization.framework */; };
 		AAA3047D20F10DCC00226319 /* MatlabSerializationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA3047C20F10DCC00226319 /* MatlabSerializationTests.swift */; };
 		AAA3047F20F10DCC00226319 /* MatlabSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = AAA3047120F10DCC00226319 /* MatlabSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -26,7 +25,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AA0C785D2120A0A2009771F2 /* AudioBufferConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioBufferConverter.swift; sourceTree = "<group>"; };
 		AAA3046E20F10DCC00226319 /* MatlabSerialization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MatlabSerialization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAA3047120F10DCC00226319 /* MatlabSerialization.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MatlabSerialization.h; sourceTree = "<group>"; };
 		AAA3047220F10DCC00226319 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -79,7 +77,6 @@
 				AAA3048820F10E0C00226319 /* MatlabSerialization.swift */,
 				AAA3047120F10DCC00226319 /* MatlabSerialization.h */,
 				AAA3047220F10DCC00226319 /* Info.plist */,
-				AA0C785D2120A0A2009771F2 /* AudioBufferConverter.swift */,
 			);
 			path = MatlabSerialization;
 			sourceTree = "<group>";
@@ -203,7 +200,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAA3048920F10E0D00226319 /* MatlabSerialization.swift in Sources */,
-				AA0C785E2120A0A2009771F2 /* AudioBufferConverter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
