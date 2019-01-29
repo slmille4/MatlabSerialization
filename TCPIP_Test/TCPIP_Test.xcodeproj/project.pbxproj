@@ -1,0 +1,428 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA8D54DF215686DC00150131 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8D54DE215686DC00150131 /* AppDelegate.swift */; };
+		AA8D54E4215686DC00150131 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA8D54E2215686DC00150131 /* Main.storyboard */; };
+		AA8D54E6215686DD00150131 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA8D54E5215686DD00150131 /* Assets.xcassets */; };
+		AA8D54E9215686DD00150131 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA8D54E7215686DD00150131 /* LaunchScreen.storyboard */; };
+		AA8D54FE2156873E00150131 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8D54FD2156873E00150131 /* ViewController.swift */; };
+		AAD1A8002200B9E300D2A160 /* MatlabSerialization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD1A7FD2200B9C500D2A160 /* MatlabSerialization.framework */; };
+		AAD1A8012200B9E300D2A160 /* MatlabSerialization.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AAD1A7FD2200B9C500D2A160 /* MatlabSerialization.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AAD1A7FC2200B9C500D2A160 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA8D55022156877E00150131 /* MatlabSerialization.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AAA3046E20F10DCC00226319;
+			remoteInfo = MatlabSerialization;
+		};
+		AAD1A7FE2200B9C500D2A160 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA8D55022156877E00150131 /* MatlabSerialization.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AAA3047720F10DCC00226319;
+			remoteInfo = MatlabSerializationTests;
+		};
+		AAD1A8022200B9E300D2A160 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA8D55022156877E00150131 /* MatlabSerialization.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = AAA3046D20F10DCC00226319;
+			remoteInfo = MatlabSerialization;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AA8D550F215687A600150131 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AAD1A8012200B9E300D2A160 /* MatlabSerialization.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		AA8D54DB215686DC00150131 /* TCPIP_Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TCPIP_Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA8D54DE215686DC00150131 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AA8D54E3215686DC00150131 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AA8D54E5215686DD00150131 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AA8D54E8215686DD00150131 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AA8D54EA215686DD00150131 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA8D54FD2156873E00150131 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AA8D55022156877E00150131 /* MatlabSerialization.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MatlabSerialization.xcodeproj; path = ../MatlabSerialization.xcodeproj; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AA8D54D8215686DC00150131 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAD1A8002200B9E300D2A160 /* MatlabSerialization.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AA8D54D2215686DB00150131 = {
+			isa = PBXGroup;
+			children = (
+				AA8D55022156877E00150131 /* MatlabSerialization.xcodeproj */,
+				AA8D54DD215686DC00150131 /* TCPIP_Test */,
+				AA8D54DC215686DC00150131 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AA8D54DC215686DC00150131 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA8D54DB215686DC00150131 /* TCPIP_Test.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA8D54DD215686DC00150131 /* TCPIP_Test */ = {
+			isa = PBXGroup;
+			children = (
+				AA8D54DE215686DC00150131 /* AppDelegate.swift */,
+				AA8D54FD2156873E00150131 /* ViewController.swift */,
+				AA8D54E2215686DC00150131 /* Main.storyboard */,
+				AA8D54E5215686DD00150131 /* Assets.xcassets */,
+				AA8D54E7215686DD00150131 /* LaunchScreen.storyboard */,
+				AA8D54EA215686DD00150131 /* Info.plist */,
+			);
+			path = TCPIP_Test;
+			sourceTree = "<group>";
+		};
+		AAD1A7F82200B9C500D2A160 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AAD1A7FD2200B9C500D2A160 /* MatlabSerialization.framework */,
+				AAD1A7FF2200B9C500D2A160 /* MatlabSerializationTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AA8D54DA215686DC00150131 /* TCPIP_Test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA8D54ED215686DD00150131 /* Build configuration list for PBXNativeTarget "TCPIP_Test" */;
+			buildPhases = (
+				AA8D54D7215686DC00150131 /* Sources */,
+				AA8D54D8215686DC00150131 /* Frameworks */,
+				AA8D54D9215686DC00150131 /* Resources */,
+				AA8D550F215687A600150131 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AAD1A8032200B9E300D2A160 /* PBXTargetDependency */,
+			);
+			name = TCPIP_Test;
+			productName = TCPIP_Test;
+			productReference = AA8D54DB215686DC00150131 /* TCPIP_Test.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA8D54D3215686DB00150131 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1000;
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = Steve;
+				TargetAttributes = {
+					AA8D54DA215686DC00150131 = {
+						CreatedOnToolsVersion = 10.0;
+					};
+				};
+			};
+			buildConfigurationList = AA8D54D6215686DB00150131 /* Build configuration list for PBXProject "TCPIP_Test" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AA8D54D2215686DB00150131;
+			productRefGroup = AA8D54DC215686DC00150131 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = AAD1A7F82200B9C500D2A160 /* Products */;
+					ProjectRef = AA8D55022156877E00150131 /* MatlabSerialization.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				AA8D54DA215686DC00150131 /* TCPIP_Test */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		AAD1A7FD2200B9C500D2A160 /* MatlabSerialization.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MatlabSerialization.framework;
+			remoteRef = AAD1A7FC2200B9C500D2A160 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AAD1A7FF2200B9C500D2A160 /* MatlabSerializationTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = MatlabSerializationTests.xctest;
+			remoteRef = AAD1A7FE2200B9C500D2A160 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AA8D54D9215686DC00150131 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA8D54E9215686DD00150131 /* LaunchScreen.storyboard in Resources */,
+				AA8D54E6215686DD00150131 /* Assets.xcassets in Resources */,
+				AA8D54E4215686DC00150131 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AA8D54D7215686DC00150131 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA8D54FE2156873E00150131 /* ViewController.swift in Sources */,
+				AA8D54DF215686DC00150131 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AAD1A8032200B9E300D2A160 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MatlabSerialization;
+			targetProxy = AAD1A8022200B9E300D2A160 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AA8D54E2215686DC00150131 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AA8D54E3215686DC00150131 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AA8D54E7215686DD00150131 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AA8D54E8215686DD00150131 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AA8D54EB215686DD00150131 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AA8D54EC215686DD00150131 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AA8D54EE215686DD00150131 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SU97FN9QDN;
+				INFOPLIST_FILE = TCPIP_Test/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "personal.TCPIP-Test";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AA8D54EF215686DD00150131 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SU97FN9QDN;
+				INFOPLIST_FILE = TCPIP_Test/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "personal.TCPIP-Test";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AA8D54D6215686DB00150131 /* Build configuration list for PBXProject "TCPIP_Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA8D54EB215686DD00150131 /* Debug */,
+				AA8D54EC215686DD00150131 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA8D54ED215686DD00150131 /* Build configuration list for PBXNativeTarget "TCPIP_Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA8D54EE215686DD00150131 /* Debug */,
+				AA8D54EF215686DD00150131 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AA8D54D3215686DB00150131 /* Project object */;
+}
