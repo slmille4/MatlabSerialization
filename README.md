@@ -6,9 +6,9 @@ MatlabSerialization transforms Swift Foundation objects into a byte array for ra
 
 ## Basic translations:
 - MLMultiArray -> Matrix
-- Dictionary<String:Any> -> 1x1 Struct
+- Dictionary\<String:Any\> -> 1x1 Struct
 - MatlabEncodableArray protocol -> 1xN Struct
-- Array<Any> -> 1xN Cell Array
+- Array\<Any\> -> 1xN Cell Array
 
 ## Limitations:
 Only 2D cell/struct arrays (no limitation for matrics)
