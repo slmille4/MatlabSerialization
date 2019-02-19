@@ -44,6 +44,42 @@ class MatlabSerializationTests: XCTestCase {
         super.tearDown()
     }
     
+    func test64BitInts() {
+        let arr: [Any] = [Int64(1),UInt64(2)]
+        m = try!MatlabSerialization.data(withMatlabObject: arr)
+        let bytes = [UInt8](m)
+        print(bytes)
+        
+        assertByte(with: 33)
+        assertByte(with: 2)
+        assertByte(with: 1)
+        assertByte(with: 0)
+        assertByte(with: 0)
+        assertByte(with: 0)
+        assertByte(with: 2)
+        assertByte(with: 0)
+        assertByte(with: 0)
+        assertByte(with: 0)
+        assertByte(with: 9)
+        assertByte(with: 1)
+        assertByte(with: 0)
+        assertByte(with: 0)
+        assertByte(with: 0)
+        assertByte(with: 0)
+        assertByte(with: 0)
+        assertByte(with: 0)
+        assertByte(with: 0)
+        assertByte(with: 10)
+        assertByte(with: 2)
+        assertByte(with: 0)
+        assertByte(with: 0)
+        assertByte(with: 0)
+        assertByte(with: 0)
+        assertByte(with: 0)
+        assertByte(with: 0)
+        assertByte(with: 0)
+    }
+    
     func testArrStructs() {
         let basicArr: [Basic] = [Basic(a: "A", b: 1),Basic(a: "B", b: 2),Basic(a: "C", b: 3)]
         
@@ -937,6 +973,97 @@ class MatlabSerializationTests: XCTestCase {
         assertByte(with: 0)
         assertByte(with: 240)
         assertByte(with: 63)
+    }
+    
+    func createBuffer(_ outBuffer:AVAudioPCMBuffer) {
+        let outputBuffer = UnsafeMutableAudioBufferListPointer(outBuffer.mutableAudioBufferList)
+        var counter:Float = 1
+        outBuffer.frameLength = outBuffer.frameCapacity
+        for buffer in outputBuffer {
+            guard let data = buffer.mData?.assumingMemoryBound(to: Float32.self) else { continue }
+            
+            for i in 0..<outBuffer.frameCapacity {
+                //        data[i] = counter
+                data.advanced(by: Int(i)).pointee = counter
+                counter += 1
+            }
+//            buffer.mDataByteSize = outBuffer.frameCapacity * MemoryLayout<Float32>.size
+        }
+    }
+    
+    func testExample() {
+//        let format1 = AVAudioFormat(
+//            commonFormat: .pcmFormatInt32,
+//            sampleRate: 128,
+//            interleaved: false,
+//            channelLayout: AVAudioChannelLayout(layoutTag: kAudioChannelLayoutTag_Quadraphonic)!)
+        
+        let format2 = AVAudioFormat(
+            commonFormat: .pcmFormatFloat32,
+            sampleRate: 2200,
+            interleaved: false,
+            channelLayout: AVAudioChannelLayout(layoutTag: kAudioChannelLayoutTag_Quadraphonic)!)
+        
+        // Create format
+//        var outputFormat: AudioStreamBasicDescription = AudioStreamBasicDescription()
+//        outputFormat.mFormatID = kAudioFormatLinearPCM
+////        outputFormat.mFormatFlags = kAudioFormatFlagsNativeFloatPacked | kLinearPCMFormatFlagIsNonInterleaved
+//        outputFormat.mFormatFlags = kAudioFormatFlagIsFloat|kAudioFormatFlagIsNonInterleaved
+//        outputFormat.mSampleRate = 128
+//        outputFormat.mFramesPerPacket = 1
+//        outputFormat.mChannelsPerFrame = 4
+//        outputFormat.mBytesPerPacket = UInt32(MemoryLayout<Float32>.size) * outputFormat.mChannelsPerFrame
+//        outputFormat.mBytesPerFrame = UInt32(MemoryLayout<Float32>.size) * outputFormat.mChannelsPerFrame
+//        outputFormat.mBitsPerChannel = UInt32(8 * MemoryLayout<Float32>.size)
+        
+        // Create test Audio Buffer
+        let bufferSize:UInt32 = 10
+//        let outputLayoutSubstitute = AVAudioChannelLayout(layoutTag: kAudioChannelLayoutTag_Quadraphonic)
+        
+//        guard let format = AVAudioFormat(streamDescription:&outputFormat, channelLayout:outputLayoutSubstitute) else { print("format bad"); return XCTFail() }
+        guard let outBuffer = AVAudioPCMBuffer(pcmFormat: format2, frameCapacity: bufferSize) else { print("outBuffer bad"); return XCTFail() }
+        
+        createBuffer(outBuffer)
+        
+        // Save matrix to .CAF file
+        let fm = FileManager.default
+        let doc = try! fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+        let fileURL = doc.appendingPathComponent("myfile.caf", isDirectory:false)
+        try? fm.removeItem(at: fileURL) // just in case
+    
+        do {
+            let outFile = try AVAudioFile(forWriting: fileURL, settings: outBuffer.format.settings)
+//            let outFile = try AVAudioFile(forWriting: fileURL, nil,
+//                commonFormat: .pcmFormatFloat32,
+//                sampleRate: 2200,
+//                interleaved: false)
+            try outFile.write(from:outBuffer)
+        } catch {
+            print(error)
+            XCTFail()
+        }
+        
+        // Read, Convert .CAF file to MLMultiArray
+        guard let infile = try? AVAudioFile(forReading: fileURL),
+            let inBuffer = AVAudioPCMBuffer(pcmFormat: infile.processingFormat, frameCapacity: UInt32(infile.length)) else { XCTFail(); return }
+        
+
+        let test = UnsafeBufferPointer<UnsafeMutablePointer<Float>>(start:inBuffer.floatChannelData, count:Int(inBuffer.format.channelCount))
+        for buffer in test {
+            let floats = UnsafeBufferPointer<Float>(start:buffer, count:Int(inBuffer.frameCapacity))
+            for (index, value) in floats.enumerated() {
+                print("value \(index): \(value)")
+            }
+        }
+        //        let thing = UnsafeMutableAudioBufferListPointer(inBuffer.mutableAudioBufferList)
+        //        let test = inBuffer.floatChannelData
+        let mlm = convertAudioBufferList(inBuffer.mutableAudioBufferList, alignment: MemoryLayout<Float32>.alignment)
+        
+        
+        //        let abl = inBuffer?.audioBufferList
+        
+        // Send MLMultiArray to Matlab
+        
     }
     
     func assertByte(with: UInt8){

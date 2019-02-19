@@ -1,5 +1,9 @@
 import CoreML
 
+//public protocol MatlabEncodable {
+//    //static var keys: [String]{get}
+//}
+
 public protocol MatlabEncodableArray  {
     var columns:[[Any]]{get}
     var keys: [String]{get}
@@ -18,6 +22,7 @@ public class MatlabSerialization : NSObject {
 
 private struct MatlabWriter {
     func encodeScalar<T>(_ value: T) -> Data {
+        //return Data(bytes: &value, count: MemoryLayout.size(ofValue: value) )
         return withUnsafeBytes(of: value) { Data($0) }
     }
     
@@ -34,7 +39,7 @@ private struct MatlabWriter {
         } else if let arrayTyped = arrayAny as? [String], arrayTyped.contains(where: {$0.count>1}) {
             type = 36
             m.append(encodeScalar(type))
-            m.append(serializeString(arrayTyped.reduce("",+)))
+            m.append(try serializeString(arrayTyped.reduce("",+)))
             m.append(serializeNumericArray(arrayTyped.map{UInt32($0.count)}, transpose))
             m.append(serializeLogical(arrayTyped.map{$0.isEmpty} ))
         } else if !arrayAny.contains(where: {$0 is [Any]}) {//all scalar elements
@@ -74,6 +79,10 @@ private struct MatlabWriter {
         return m
     }
     
+//    func serializeDictArray(_ array:[Dictionary<String,Any>]) {
+//
+//    }
+    
     func serializeArrayTyped<T>(arrayTyped:[T], f:(T) throws -> Data,_ transpose:Bool = false) throws -> Data {
         var m = Data()
         let size: [UInt32] = transpose ? [UInt32(arrayTyped.count),1] : [1,UInt32(arrayTyped.count)]
@@ -105,7 +114,7 @@ private struct MatlabWriter {
         return m
     }
     
-    func serializeScalar<T>(_ value:inout T) -> Data {
+    func serializeScalar<T>(_ value: T) -> Data {
         var m = Data()
         guard let tag = scalarClass2Tag(value) else { return m }
         
@@ -116,18 +125,29 @@ private struct MatlabWriter {
     
     func serializeAny(_ object: Any?) throws -> Data {
         var m = Data()
-        
         switch object {
         case let str as String:
-            m = serializeString(str)
-        case var num as Int32:
-            m = serializeScalar(&num)
-        case var num as Int64:
-            m = serializeScalar(&num)
-        case var num as Float:
-            m = serializeScalar(&num)
-        case var num as Double:
-            m = serializeScalar(&num)
+            m = try serializeString(str)
+        case let num as Double:
+            m = serializeScalar(num)
+        case let num as Float:
+            m = serializeScalar(num)
+        case let num as Int8:
+            m = serializeScalar(num)
+        case let num as UInt8:
+            m = serializeScalar(num)
+        case let num as Int16:
+            m = serializeScalar(num)
+        case let num as UInt16:
+            m = serializeScalar(num)
+        case let num as Int32:
+            m = serializeScalar(num)
+        case let num as UInt32:
+            m = serializeScalar(num)
+        case is Int, is Int64:
+            m = serializeScalar(object as! Int64)
+        case let num as UInt64:
+            m = serializeScalar(num)
         case let structs as MatlabEncodableArray:
             try m = serializeStructs(structs)
         case let array as Array<Any>:
@@ -185,6 +205,42 @@ private struct MatlabWriter {
         return m
     }
     
+//    func serializeMultiBuffer<T:MultiArrayType>(_ mlmPointer:UnsafePointer<T>) -> Data {
+//        var m = Data()
+//
+////        m.append(encodeArray([UInt8](arrayLiteral: type,UInt8(mlmatrix.shape.count)) ))
+////        m.append(encodeArray(mlmatrix.shape))
+////        //let test = mlmatrix.shape.map{$0.uint32Value}
+////        m.append(encodeArray(mlmatrix.shape.map{$0.uint32Value}))
+////        for i in 0..<mlmatrix.count {
+////            print([UInt8](encodeScalar(&mlmatrix[i].doubleValue)))
+////            m.append(encodeScalar(&mlmatrix[i]))
+////        }
+//        return Data(buffer:mlmBuffer)
+//    }
+    
+//    func isArrayType<T>(array:[Any?], tType:T.Type) -> Bool {
+//        for value in array {
+//
+////            let arrayType = type(of: value)        // Array<Car>.Type
+////            let arrayType2 = type(of: value)
+////            //let carType = array.Element.self  // Car.Type
+////            let typeStr = String(describing: arrayType)
+////            let tS = T.self
+////
+////            if type(of:value) != tType { return false }
+////            if value is T.self {
+////                print("T.self")
+////            }
+//            if type(of:value) == T.self {
+//                print("T.Type")
+//            }
+//            if value is T.Type {
+//                print("T.Type")
+//            }
+//        }
+//        return true
+//    }
     func serializeStructs(_ structs:MatlabEncodableArray) throws -> Data {
         var m = Data()
         //var typeId:UInt8 = 128
@@ -196,8 +252,7 @@ private struct MatlabWriter {
         let keyCount = [UInt32(keys.count)]
         let keyLengths = keys.map({UInt32($0.count)})
         m.append(encodeArray(keyCount+keyLengths))
-        m.append(encodeStringArray(keys))
-        
+        try m.append(encodeStringArray(keys))
 //        var bit:UInt8 = 0
         m.append(encodeArray([2,1,UInt32(columns[0].count)] as [UInt32]))
         m.append(encodeScalar(UInt8(0)))
@@ -217,27 +272,38 @@ private struct MatlabWriter {
         let keyCount = [UInt32(keyArray.count)]
         let keyLengths = keyArray.map({UInt32($0.count)})
         m.append(encodeArray(keyCount+keyLengths))
-        m.append(encodeStringArray(keyArray))
+        try m.append(encodeStringArray(keyArray))
         
         let valueArray = Array(dictionary.values)
         m.append(encodeArray([2,1,1] as [UInt32]))
+//        var bit:UInt8 = 1
         m.append(encodeScalar(1 as UInt8))
         try m.append(serializeArray(valueArray,true))//transpose to imitate struct2cell
         return m
     }
     
-    func serializeString(_ value:String) -> Data {
+    func serializeString(_ value:String) throws -> Data {
         var m = Data()
+//        let type:UInt8 = 0
         m.append(0 as UInt8)
+//        var count = UInt32(value.count)
         m.append(encodeScalar(UInt32(value.count)))
-        m.append(value.data(using: .utf8)!)
+        if let data = value.data(using: .ascii, allowLossyConversion: true){
+            m.append(data)
+        } else {
+            throw NSError(domain: NSCocoaErrorDomain, code: CocoaError.propertyListReadCorrupt.rawValue, userInfo: ["NSDebugDescription" : "Can only encode ASCII text"])
+        }
         return m
     }
     
-    func encodeStringArray(_ value:[String]) -> Data {
+    func encodeStringArray(_ value:[String]) throws -> Data {
         var m = Data()
         for s in value {
-            m.append(s.data(using: .utf8)!)
+            if let data = s.data(using: .ascii, allowLossyConversion: true) {
+                m.append(data)
+            } else {
+                throw NSError(domain: NSCocoaErrorDomain, code: CocoaError.propertyListReadCorrupt.rawValue, userInfo: ["NSDebugDescription" : "Can only encode ASCII text"])
+            }
         }
         return m
     }
