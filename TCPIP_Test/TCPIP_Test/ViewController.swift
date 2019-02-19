@@ -12,7 +12,7 @@ import MatlabSerialization
 class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         let dict:[String:Any] = ["A":["a":[1.0,2.0,3.0],"b":["a","b","c"]],"B":["a":1.0,"b":2.0,"c":3.0]]
         let m = try!MatlabSerialization.data(withMatlabObject: dict)
 
@@ -30,7 +30,4 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
-

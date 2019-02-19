@@ -30,3 +30,5 @@ Functionality will be added according to interest. Email suggestions to slmille4
             }
         }
 ```
+
+Run MatlabSerialization.m in MATLAB to create the tcpip server which will receive the data. Requires the Instrument Control Toolbox.

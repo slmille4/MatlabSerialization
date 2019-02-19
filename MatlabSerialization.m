@@ -1,7 +1,7 @@
 t = tcpip('0.0.0.0', 54000, 'NetworkRole', 'server');
 t.InputBufferSize = 134217727;
 % %Open a connection. This will not return until a connection is received.
-% 
+%
 fopen(t);
 % %Read the waveform and confirm it visually by plotting it.
 BytesAvailable = 0;
